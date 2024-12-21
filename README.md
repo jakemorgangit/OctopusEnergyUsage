@@ -4,11 +4,13 @@ A python application to show live energy usage (UK only)
 ![image](https://github.com/user-attachments/assets/31839a6c-28fa-48a9-a633-e8ba9eccc96e)
 
 # Requirements
+
 Hardware
+
 This application requires an Octopus Home Mini device, which needs to be added to your devices via the Octopus app.
 https://octopus.energy/blog/octopus-home-mini/
 
-If you don't have an Octopus Home Mini, you can request one using this link.
+If you don't have an Octopus Home Mini, you can request one using this link:
 https://octopus.typeform.com/to/B5ifg5rQ
 
 # Setup
@@ -17,12 +19,12 @@ https://octopus.typeform.com/to/B5ifg5rQ
 You will need to update the `.env` file with your personal Octopus Energy details:
 
 ```
-OCTOPUS_API_KEY=****
-OCTOPUS_ACCOUNT_NUMBER=****
-OCTOPUS_MPAN=******
-OCTOPUS_METER_SERIAL=******
-OCTOPUS_PRODUCT_CODE=******
-OCTOPUS_TARIFF_CODE=******
+OCTOPUS_API_KEY=[YOUR_API_KEY]
+OCTOPUS_ACCOUNT_NUMBER=[OCTOPUS_ACCOUNT_NUMBER]
+OCTOPUS_MPAN=[OCTOPUS_MPAN]
+OCTOPUS_METER_SERIAL=[OCTOPUS_METER_SERIAL]
+OCTOPUS_PRODUCT_CODE=[OCTOPUS_PRODUCT_CODE]
+OCTOPUS_TARIFF_CODE=[OCTOPUS_TARIFF_CODE]
 ```
 
 
@@ -46,11 +48,14 @@ In the example above:
 Make sure to replace these with your specific product and tariff codes.
 
 **Step 2: Install Prerequisites**
+
 Install the required Python libraries:
+
 `pip install python-dotenv python-dateutil`
 
 
 **Step 3: Run the Application**
+
 Execute the script:
 
 `python .\octopusUsageGUI.py`
@@ -74,7 +79,9 @@ Color-coded current KWh usage:
 These can be tweaked based on your preferences
 
 # Notes
+
 **API Rate Limits**
+
 Octopus imposes rate limits on their API. If you encounter the following error:
 
 ![image](https://github.com/user-attachments/assets/f95b0aae-a2c4-4544-95d8-d4d20d2621c1)
