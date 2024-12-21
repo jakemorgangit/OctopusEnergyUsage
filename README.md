@@ -5,7 +5,7 @@ A python application to show live energy usage (UK only)
 
 # Requirements
 
-Hardware
+**Hardware:**
 
 This application requires an Octopus Home Mini device, which needs to be added to your devices via the Octopus app.
 https://octopus.energy/blog/octopus-home-mini/
