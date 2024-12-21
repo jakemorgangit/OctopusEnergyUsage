@@ -3,23 +3,67 @@ A python application to show live energy usage (UK only)
 
 ![image](https://github.com/user-attachments/assets/31839a6c-28fa-48a9-a633-e8ba9eccc96e)
 
-# This aplication requires an Octopus Home Mini device which will need to be added to your devices from the Octopus app.
+# Requirements
+Hardware
+This application requires an Octopus Home Mini device, which needs to be added to your devices via the Octopus app.
 https://octopus.energy/blog/octopus-home-mini/
 
-If you don't have one, you can request one using this link:
+If you don't have an Octopus Home Mini, you can request one using this link.
 https://octopus.typeform.com/to/B5ifg5rQ
 
+# Setup
 
-# Prereqs:
-pip install python-dotenv python-dateutil
+**Step 1: Obtain Your Credentials**
+You will need to update the `.env` file with your personal Octopus Energy details:
+
+```
+OCTOPUS_API_KEY=****
+OCTOPUS_ACCOUNT_NUMBER=****
+OCTOPUS_MPAN=******
+OCTOPUS_METER_SERIAL=******
+OCTOPUS_PRODUCT_CODE=******
+OCTOPUS_TARIFF_CODE=******
+```
 
 
+Most details can be retrieved from the Octopus Energy API access page: https://octopus.energy/dashboard/new/accounts/personal-details/api-access
 
-# Run the python script:   python .\octopusUsageGUI.py
+![image](https://github.com/user-attachments/assets/6fe2eb10-cc9e-4512-a321-bf05523c539d)
 
-A tkinter GUI will launch showing your current usage (polled every 10 seconds via GraphQL API) and the electricity cost and rates (via REST - 30 minute refresh interval).
+The product and tariff codes can be obtained from the unit rates API:
 
-The current KWH usage is colour coded:
+![image](https://github.com/user-attachments/assets/4ce50eea-ba3e-4a6c-b56f-4b067bfa0f5b)
+
+ ```
+curl -u "OCTOPUS_API_KEY:" \
+"https://api.octopus.energy/v1/products/AGILE-FLEX-22-11-25/electricity-tariffs/E-1R-AGILE-FLEX-22-11-25-D/standard-unit-rates/"
+
+```
+In the example above:
+
+`AGILE-FLEX-22-11-25` is the product code.
+`E-1R-AGILE-FLEX-22-11-25-D` is the tariff code.
+Make sure to replace these with your specific product and tariff codes.
+
+**Step 2: Install Prerequisites**
+Install the required Python libraries:
+`pip install python-dotenv python-dateutil`
+
+
+**Step 3: Run the Application**
+Execute the script:
+
+`python .\octopusUsageGUI.py`
+
+
+This will launch a Tkinter GUI that displays:
+
+Current usage (updated every 10 seconds via the GraphQL API).
+Electricity costs and rates (updated every 30 minutes via REST).
+
+# Features
+Real-Time Usage Tracking
+Color-coded current KWh usage:
 
     Color code based on usage in kW:
       - Green if < 1.0
@@ -28,3 +72,18 @@ The current KWH usage is colour coded:
       - Red if >= 1.5
 
 These can be tweaked based on your preferences
+
+# Notes
+**API Rate Limits**
+Octopus imposes rate limits on their API. If you encounter the following error:
+
+![image](https://github.com/user-attachments/assets/f95b0aae-a2c4-4544-95d8-d4d20d2621c1)
+
+Reduce the polling frequency in the script (e.g., line 248):
+
+```
+# Schedule next update in 10 seconds
+root.after(10_000, update_data)
+```
+
+Lowering the polling frequency can help you stay within the rate limits.
