@@ -1,7 +1,7 @@
 # OctopusEnergyUsage
 A python application to show live energy usage (UK only)
 
-![image](https://github.com/user-attachments/assets/31839a6c-28fa-48a9-a633-e8ba9eccc96e)
+![image](https://github.com/user-attachments/assets/31839a6c-28fa-48a9-a633-e8ba9eccc96e)![image](https://github.com/user-attachments/assets/8abc1459-49f7-40d5-81f1-bb15e13182ec)
 
 # Requirements
 
@@ -10,6 +10,7 @@ A python application to show live energy usage (UK only)
 This application requires an Octopus Home Mini device
 
 ![image](https://github.com/user-attachments/assets/7864b43c-7703-4804-a6f6-127e4bcc0b92)
+
 
 which needs to be added to your devices via the Octopus app.
 https://octopus.energy/blog/octopus-home-mini/
